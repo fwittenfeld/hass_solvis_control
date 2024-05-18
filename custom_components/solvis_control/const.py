@@ -235,6 +235,14 @@ REGISTERS = [
         state_class="measurement",
         enabled_by_default=False,
     ),
+    ModbusFieldConfig( #S16 (Nur bei OstWest Anlage)
+        name="solar_collector_temp_2",
+        address=33039,
+        unit="°C",
+        device_class="temperature",
+        state_class="measurement",
+        enabled_by_default=False,
+    ),
     ModbusFieldConfig(
         name="solar_water_temp",
         address=33030,
