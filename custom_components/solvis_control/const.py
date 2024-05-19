@@ -187,8 +187,8 @@ REGISTERS = [
     ModbusFieldConfig( # solar_water_flow
         name="volumenstrom_s17",
         address=33040,
-        unit="l/min",
-        device_class="speed",
+        unit="l/h", #! l/h not l/min as in the documentation
+        device_class="volume_flow_rate",
         state_class="measurement",
         enabled_by_default=False,
     ),
@@ -196,7 +196,7 @@ REGISTERS = [
         name="volumenstrom_s18",
         address=33041,
         unit="l/min",
-        device_class="speed",
+        device_class="volume_flow_rate",
         state_class="measurement",
     ),
     
@@ -210,6 +210,14 @@ REGISTERS = [
         entity_category="diagnostic",
     ),
     
+    ModbusFieldConfig(  # A01.Pumpe Zirkulation
+        name="ausgang_a1",
+        address=33280,
+        unit="",
+        device_class="ENUM",
+        data={"0": "Open", "1": "Closed"},
+        state_class="measurement",
+    ),
     
     
     
@@ -321,13 +329,6 @@ REGISTERS = [
         name="ionisation_voltage",
         address=33540,
         unit="mV",
-        device_class="voltage",
-        state_class="measurement",
-    ),
-    ModbusFieldConfig(  # A01.Pumpe Zirkulation
-        name="a01_pumpe_zirkulation",
-        address=33280,
-        unit="V",
         device_class="voltage",
         state_class="measurement",
     ),
